@@ -1,0 +1,31 @@
+{
+  "short_name": "React Quiz",
+  "name": "The React Quiz - Test Your React Knowledge",
+  "description": "An interactive quiz application to test and improve your React.js knowledge",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1098ad",
+  "background_color": "#343a40",
+  "orientation": "portrait-primary",
+  "categories": ["education", "games"],
+  "lang": "en"
+}

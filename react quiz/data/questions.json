@@ -1,0 +1,403 @@
+{
+  "questions": [
+    {
+      "question": "Which is the most popular JavaScript framework?",
+      "options": ["Angular", "React", "Svelte", "Vue"],
+      "correctOption": 1,
+      "points": 10,
+      "difficulty": "easy",
+      "category": "basics",
+      "explanation": "React has the largest market share and community among JavaScript frameworks, maintained by Meta (Facebook)."
+    },
+    {
+      "question": "Which company invented React?",
+      "options": ["Google", "Apple", "Netflix", "Facebook"],
+      "correctOption": 3,
+      "points": 10,
+      "difficulty": "easy",
+      "category": "basics",
+      "explanation": "React was created by Jordan Walke at Facebook in 2011 and open-sourced in 2013."
+    },
+    {
+      "question": "What's the fundamental building block of React apps?",
+      "options": ["Components", "Blocks", "Elements", "Effects"],
+      "correctOption": 0,
+      "points": 10,
+      "difficulty": "easy",
+      "category": "components",
+      "explanation": "Components are reusable, self-contained pieces of UI that can be composed together to build complex interfaces."
+    },
+    {
+      "question": "What's the name of the syntax we use to describe the UI in React components?",
+      "options": ["FBJ", "Babel", "JSX", "ES2015"],
+      "correctOption": 2,
+      "points": 10,
+      "difficulty": "easy",
+      "category": "basics",
+      "explanation": "JSX (JavaScript XML) is a syntax extension that allows you to write HTML-like code in JavaScript files."
+    },
+    {
+      "question": "How does data flow naturally in React apps?",
+      "options": [
+        "From parents to children",
+        "From children to parents",
+        "Both ways",
+        "The developers decides"
+      ],
+      "correctOption": 0,
+      "points": 10,
+      "difficulty": "easy",
+      "category": "state",
+      "explanation": "React uses unidirectional data flow - data flows down from parent to child components via props."
+    },
+    {
+      "question": "How to pass data into a child component?",
+      "options": ["State", "Props", "PropTypes", "Parameters"],
+      "correctOption": 1,
+      "points": 10,
+      "difficulty": "easy",
+      "category": "components",
+      "explanation": "Props (short for properties) are the mechanism for passing data from parent to child components."
+    },
+    {
+      "question": "When to use derived state?",
+      "options": [
+        "Whenever the state should not trigger a re-render",
+        "Whenever the state can be synchronized with an effect",
+        "Whenever the state should be accessible to all components",
+        "Whenever the state can be computed from another state variable"
+      ],
+      "correctOption": 3,
+      "points": 30,
+      "difficulty": "hard",
+      "category": "state",
+      "explanation": "Derived state is computed from existing state during render, avoiding unnecessary state variables and keeping data in sync."
+    },
+    {
+      "question": "What triggers a UI re-render in React?",
+      "options": [
+        "Running an effect",
+        "Passing props",
+        "Updating state",
+        "Adding event listeners to DOM elements"
+      ],
+      "correctOption": 2,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "state",
+      "explanation": "State updates trigger re-renders. When state changes, React re-renders the component and its children."
+    },
+    {
+      "question": "When do we directly \"touch\" the DOM in React?",
+      "options": [
+        "When we need to listen to an event",
+        "When we need to change the UI",
+        "When we need to add styles",
+        "Almost never"
+      ],
+      "correctOption": 3,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "basics",
+      "explanation": "React manages the DOM for us through the Virtual DOM. Direct DOM manipulation is rarely needed and typically done via refs."
+    },
+    {
+      "question": "In what situation do we use a callback to update state?",
+      "options": [
+        "When updating the state will be slow",
+        "When the updated state is very data-intensive",
+        "When the state update should happen faster",
+        "When the new state depends on the previous state"
+      ],
+      "correctOption": 3,
+      "points": 30,
+      "difficulty": "hard",
+      "category": "state",
+      "explanation": "Using a callback (prevState => newState) ensures you're working with the latest state value, avoiding stale state issues."
+    },
+    {
+      "question": "If we pass a function to useState, when will that function be called?",
+      "options": [
+        "On each re-render",
+        "Each time we update the state",
+        "Only on the initial render",
+        "The first time we update the state"
+      ],
+      "correctOption": 2,
+      "points": 30,
+      "difficulty": "hard",
+      "category": "hooks",
+      "explanation": "This is called lazy initialization. The function is only called once during the initial render to compute the initial state."
+    },
+    {
+      "question": "Which hook to use for an API request on the component's initial render?",
+      "options": ["useState", "useEffect", "useRef", "useReducer"],
+      "correctOption": 1,
+      "points": 10,
+      "difficulty": "easy",
+      "category": "hooks",
+      "explanation": "useEffect with an empty dependency array runs once after the initial render, making it ideal for API calls."
+    },
+    {
+      "question": "Which variables should go into the useEffect dependency array?",
+      "options": [
+        "Usually none",
+        "All our state variables",
+        "All state and props referenced in the effect",
+        "All variables needed for clean up"
+      ],
+      "correctOption": 2,
+      "points": 30,
+      "difficulty": "hard",
+      "category": "hooks",
+      "explanation": "The dependency array should include all reactive values (state, props, context) used inside the effect to prevent stale closures."
+    },
+    {
+      "question": "An effect will always run on the initial render.",
+      "options": [
+        "True",
+        "It depends on the dependency array",
+        "False",
+        "In depends on the code in the effect"
+      ],
+      "correctOption": 0,
+      "points": 30,
+      "difficulty": "hard",
+      "category": "hooks",
+      "explanation": "Effects always run after the initial render, regardless of the dependency array. The array only controls subsequent runs."
+    },
+    {
+      "question": "When will an effect run if it doesn't have a dependency array?",
+      "options": [
+        "Only when the component mounts",
+        "Only when the component unmounts",
+        "The first time the component re-renders",
+        "Each time the component is re-rendered"
+      ],
+      "correctOption": 3,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "hooks",
+      "explanation": "Without a dependency array, the effect runs after every render. This is rarely what you want and can cause performance issues."
+    },
+    {
+      "question": "What is the difference between useMemo and useCallback?",
+      "options": [
+        "useMemo caches values, useCallback caches functions",
+        "useMemo is for effects, useCallback is for state",
+        "They are exactly the same",
+        "useMemo is deprecated, useCallback is the replacement"
+      ],
+      "correctOption": 0,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "hooks",
+      "explanation": "useMemo memoizes computed values while useCallback memoizes function references. Both help prevent unnecessary re-renders."
+    },
+    {
+      "question": "What does useRef return?",
+      "options": [
+        "A state variable",
+        "A mutable object with a current property",
+        "A callback function",
+        "An immutable value"
+      ],
+      "correctOption": 1,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "hooks",
+      "explanation": "useRef returns a mutable ref object whose .current property is initialized to the passed argument and persists across renders."
+    },
+    {
+      "question": "Which hook should you use to access route parameters in React Router?",
+      "options": ["useRoute", "useParams", "useLocation", "useQuery"],
+      "correctOption": 1,
+      "points": 10,
+      "difficulty": "easy",
+      "category": "router",
+      "explanation": "useParams returns an object of key/value pairs of URL parameters from the current route."
+    },
+    {
+      "question": "How do you programmatically navigate in React Router v6?",
+      "options": [
+        "useHistory().push()",
+        "useNavigate()()",
+        "useRouter().navigate()",
+        "redirect()"
+      ],
+      "correctOption": 1,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "router",
+      "explanation": "In React Router v6, useNavigate returns a function that lets you navigate programmatically. useHistory was used in v5."
+    },
+    {
+      "question": "What is the purpose of React.memo?",
+      "options": [
+        "To create memoized state",
+        "To prevent unnecessary re-renders of functional components",
+        "To store values in memory",
+        "To optimize useEffect performance"
+      ],
+      "correctOption": 1,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "performance",
+      "explanation": "React.memo is a higher-order component that memoizes the result. If props haven't changed, React skips rendering the component."
+    },
+    {
+      "question": "When should you NOT use useMemo or useCallback?",
+      "options": [
+        "When the computation is expensive",
+        "When passing callbacks to optimized child components",
+        "For simple calculations that are fast to compute",
+        "When dealing with large data sets"
+      ],
+      "correctOption": 2,
+      "points": 30,
+      "difficulty": "hard",
+      "category": "performance",
+      "explanation": "Memoization has its own cost. For simple, fast calculations, the overhead of memoization can be more expensive than just re-computing."
+    },
+    {
+      "question": "What can Error Boundaries NOT catch?",
+      "options": [
+        "Errors in render methods",
+        "Errors in lifecycle methods",
+        "Errors in event handlers",
+        "Errors in child components"
+      ],
+      "correctOption": 2,
+      "points": 30,
+      "difficulty": "hard",
+      "category": "advanced",
+      "explanation": "Error boundaries don't catch errors in event handlers, async code, server-side rendering, or errors thrown in the boundary itself."
+    },
+    {
+      "question": "Which lifecycle method is used in class components to catch errors?",
+      "options": [
+        "componentDidMount",
+        "componentDidCatch",
+        "componentWillUnmount",
+        "shouldComponentUpdate"
+      ],
+      "correctOption": 1,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "advanced",
+      "explanation": "componentDidCatch is called after an error has been thrown by a descendant component, allowing you to log errors and display a fallback UI."
+    },
+    {
+      "question": "What is a React Portal used for?",
+      "options": [
+        "Navigation between pages",
+        "Rendering children into a different part of the DOM tree",
+        "Creating server-side rendered content",
+        "Lazy loading components"
+      ],
+      "correctOption": 1,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "advanced",
+      "explanation": "Portals let you render children into a DOM node outside the parent component's hierarchy, useful for modals, tooltips, and overlays."
+    },
+    {
+      "question": "Do events from portals bubble up through the React tree?",
+      "options": [
+        "No, events stay in the portal",
+        "Yes, events bubble through the React component tree",
+        "Only if you explicitly enable it",
+        "Portals don't support events"
+      ],
+      "correctOption": 1,
+      "points": 30,
+      "difficulty": "hard",
+      "category": "advanced",
+      "explanation": "Events fired from inside a portal bubble up through the React tree, not the DOM tree, maintaining React's event delegation."
+    },
+    {
+      "question": "What does React.lazy() allow you to do?",
+      "options": [
+        "Delay state updates",
+        "Dynamically import components for code splitting",
+        "Make components load slower",
+        "Skip rendering on slow devices"
+      ],
+      "correctOption": 1,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "performance",
+      "explanation": "React.lazy allows you to define a component that is loaded dynamically, enabling code splitting and reducing initial bundle size."
+    },
+    {
+      "question": "What is required when using React.lazy?",
+      "options": [
+        "useEffect hook",
+        "Suspense component with a fallback",
+        "Error boundary",
+        "Redux store"
+      ],
+      "correctOption": 1,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "performance",
+      "explanation": "Lazy components must be wrapped in Suspense, which shows fallback content (like a loader) while waiting for the lazy component to load."
+    },
+    {
+      "question": "What is the naming convention for custom hooks?",
+      "options": [
+        "Must start with 'hook'",
+        "Must start with 'use'",
+        "Must end with 'Hook'",
+        "No specific convention"
+      ],
+      "correctOption": 1,
+      "points": 10,
+      "difficulty": "easy",
+      "category": "hooks",
+      "explanation": "Custom hooks must start with 'use' (e.g., useLocalStorage). This convention allows React to automatically check for hooks rules violations."
+    },
+    {
+      "question": "Can custom hooks call other hooks?",
+      "options": [
+        "No, hooks can only be called in components",
+        "Yes, custom hooks can call any hooks",
+        "Only useState and useEffect",
+        "Only if they're in the same file"
+      ],
+      "correctOption": 1,
+      "points": 20,
+      "difficulty": "medium",
+      "category": "hooks",
+      "explanation": "Custom hooks can call any other hooks - that's their main purpose! They let you extract and reuse stateful logic between components."
+    },
+    {
+      "question": "What is the 'use' hook introduced in React 19?",
+      "options": [
+        "A hook to use context more easily",
+        "A hook that can read promises and context during render",
+        "A replacement for useState",
+        "A hook for using external libraries"
+      ],
+      "correctOption": 1,
+      "points": 30,
+      "difficulty": "hard",
+      "category": "advanced",
+      "explanation": "The use() hook in React 19 can unwrap promises and read context values. Unlike other hooks, it can be called conditionally."
+    },
+    {
+      "question": "What are React Server Components (RSC)?",
+      "options": [
+        "Components that only run on the server and send HTML to the client",
+        "Components that run on both server and client",
+        "A way to create API endpoints in React",
+        "Components for server-side validation"
+      ],
+      "correctOption": 0,
+      "points": 30,
+      "difficulty": "hard",
+      "category": "advanced",
+      "explanation": "Server Components run only on the server, can access backend resources directly, and send rendered HTML to the client with zero JavaScript bundle impact."
+    }
+  ]
+}
