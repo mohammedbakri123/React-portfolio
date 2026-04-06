@@ -6,13 +6,17 @@ import { addItem } from "../cart/cartSlice";
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
   const dispatch = useDispatch();
-  const PizzaToAdd = {
-    pizzaId: id,
-    name: name,
-    quantity: 1,
-    unitPrice: unitPrice,
-    totalPrice: unitPrice,
-  };
+
+  function HandleAddItem() {
+    const PizzaToAdd = {
+      pizzaId: id,
+      name: name,
+      quantity: 1,
+      unitPrice: unitPrice,
+      totalPrice: unitPrice,
+    };
+    soldOut ? null : dispatch(addItem(PizzaToAdd));
+  }
   return (
     <li className="group flex gap-4 p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary-color/30 transition-all duration-300">
       <img
@@ -42,12 +46,7 @@ function MenuItem({ pizza }) {
             </span>
           )}
 
-          <Button
-            disabled={soldOut}
-            onClick={() => {
-              soldOut ? null : dispatch(addItem(PizzaToAdd));
-            }}
-          >
+          <Button disabled={soldOut} onClick={HandleAddItem}>
             Add ➕
           </Button>
         </div>

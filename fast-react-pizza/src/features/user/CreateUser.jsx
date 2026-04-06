@@ -22,11 +22,11 @@ function CreateUser() {
     navigate("/menu");
   }
 
-  if (storedUsername) {
-    setTimeout(() => {
-      navigate("/menu");
-    }, 5000);
-  }
+  // if (storedUsername) {
+  //   setTimeout(() => {
+  //     navigate("/menu");
+  //   }, 5000);
+  // }
 
   return (
     <>
@@ -39,7 +39,7 @@ function CreateUser() {
       {!storedUsername && (
         <form
           onSubmit={handleSubmit}
-          className="bg-stone-200 p-5 w-full max-w-md mx-auto rounded-3xl flex flex-col items-center"
+          className="bg-stone-200 p-5 w-full max-w-md mx-auto rounded-3xl flex flex-col items-center gap-5"
         >
           <p>👋 Welcome! Please start by telling us your name:</p>
           <InputTxt

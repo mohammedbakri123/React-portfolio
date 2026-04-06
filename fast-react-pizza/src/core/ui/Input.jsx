@@ -11,7 +11,7 @@ function InputTxt({
 }) {
   return (
     <input
-      className={`w-full p-3 outline-none focus:ring-2 focus:ring-yellow-500 rounded-xl transition-all ${customeStyles}`}
+      className={`w-full p-3 outline-none focus:ring-2 focus:ring-yellow-500 rounded-3xl transition-all ${customeStyles}`}
       type={type}
       placeholder={placeholder}
       defaultValue={defaultValue}
