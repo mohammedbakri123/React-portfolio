@@ -6,8 +6,6 @@ import { calcMinutesLeft } from "../../core/utils/helpers";
 import OrderHeader from "./OrderHeader";
 import OrderList from "./OrderList";
 import OrderSummary from "./OrderSummary";
-import { clearCart } from "../cart/cartSlice";
-import { useDispatch } from "react-redux";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function loader({ params }) {
@@ -16,8 +14,6 @@ export async function loader({ params }) {
 }
 
 function Order() {
-  const dispatch = useDispatch();
-  dispatch(clearCart());
   const order = useLoaderData();
   // Everyone can search for all orders, so for privacy reasons we're gonna exclude names or address, these are only for the restaurant staff
   const { id, status, priority, priorityPrice, orderPrice, estimatedDelivery } =

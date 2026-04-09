@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../../core/ui/Button";
 
 function EmptyCart() {
+  const navigator = useNavigate();
   return (
     <div className="text-center p-16 bg-white rounded-2xl shadow-sm border border-gray-100">
       <div className="w-20 h-20  mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
@@ -26,7 +27,13 @@ function EmptyCart() {
       <p className="text-gray-500 mb-6">
         Looks like you haven't added anything yet
       </p>
-      <Button to="/menu">Start Shopping</Button>
+      <Button
+        onClick={() => {
+          navigator("/menu");
+        }}
+      >
+        Start Shopping
+      </Button>
     </div>
   );
 }

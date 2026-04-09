@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../../core/ui/Button";
 import ButtonAlt from "../../core/ui/ButtonAlt";
 
 import { formatCurrency } from "../../core/utils/helpers";
 
 function OrderSummary({ orderPrice, priority, priorityPrice }) {
+  const navigate = useNavigate();
   return (
     <aside className="w-full md:w-80 mt-2 md:mt-0">
       <div className="bg-stone-50 p-4 rounded-lg shadow-inner">
@@ -29,8 +31,8 @@ function OrderSummary({ orderPrice, priority, priorityPrice }) {
         </div>
 
         <div className="mt-4 space-y-2">
-          <Button>Contact restaurant</Button>
-          <ButtonAlt> Back to menu</ButtonAlt>
+          <Button onClick={() => {}}>Contact restaurant</Button>
+          <ButtonAlt onClick={() => navigate("/menu")}>Back to menu</ButtonAlt>
         </div>
       </div>
     </aside>

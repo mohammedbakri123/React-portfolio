@@ -9,6 +9,8 @@ import { createOrder } from "../../core/services/apiRestaurant";
 import InputTxt from "../../core/ui/Input";
 import Button from "../../core/ui/Button";
 import { useSelector } from "react-redux";
+import store from "../../core/store";
+import { clearCart } from "../../features/cart/cartSlice";
 
 // import { useSelector } from "react-redux";
 
@@ -182,6 +184,8 @@ export async function action({ request }) {
   const newOrder = await createOrder(order);
 
   console.log("CreateOrder action received:", order);
+
+  await store.dispatch(clearCart());
 
   return redirect(`/order/${newOrder.id}`);
 }
