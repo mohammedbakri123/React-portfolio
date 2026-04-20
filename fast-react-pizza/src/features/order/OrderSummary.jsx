@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../core/ui/Button";
 import ButtonAlt from "../../core/ui/ButtonAlt";
 import { formatCurrency } from "../../core/utils/helpers";
+import SetPriority from "./SetPriority";
 
-function OrderSummary({ orderPrice, priority, priorityPrice }) {
+function OrderSummary({ order }) {
   const navigate = useNavigate();
+  const { orderPrice, priority, priorityPrice } = order;
   const total = orderPrice + (priority ? priorityPrice : 0);
 
   return (
@@ -49,6 +51,7 @@ function OrderSummary({ orderPrice, priority, priorityPrice }) {
         </div>
 
         <div className="mt-8 space-y-3">
+          {priority || <SetPriority order={order} />}
           <Button onClick={() => {}}>Support</Button>
           <ButtonAlt onClick={() => navigate("/menu")}>New Order</ButtonAlt>
         </div>

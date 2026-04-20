@@ -10,6 +10,8 @@ import CreateOrder, {
 import Order, { loader as orderLoader } from "./features/order/Order.jsx";
 import AppLayout from "./core/ui/AppLayout.jsx";
 
+import { action as setPriorityAction } from "./features/order/SetPriority.jsx";
+
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -44,6 +46,7 @@ const router = createBrowserRouter([
         element: <Order />,
         loader: orderLoader,
         errorElement: <Error />,
+        action: setPriorityAction,
       },
     ],
   },

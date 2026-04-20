@@ -16,8 +16,7 @@ export async function loader({ params }) {
 function Order() {
   const order = useLoaderData();
   // Everyone can search for all orders, so for privacy reasons we're gonna exclude names or address, these are only for the restaurant staff
-  const { id, status, priority, priorityPrice, orderPrice, estimatedDelivery } =
-    order;
+  const { id, status, priority, estimatedDelivery } = order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
   return (
@@ -40,11 +39,7 @@ function Order() {
         </div>
 
         <div className="lg:col-span-1">
-          <OrderSummary
-            orderPrice={orderPrice}
-            priority={priority}
-            priorityPrice={priorityPrice}
-          />
+          <OrderSummary order={order} />
         </div>
       </div>
     </div>
