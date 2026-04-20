@@ -4,12 +4,12 @@ import LinkMain from "../../core/ui/linkMain";
 
 function CartOverview() {
   const { items: cart } = useSelector((state) => state.cart);
-  console.log(cart);
   const cartTotal = cart.reduce((sum, item) => sum + item.totalPrice, 0);
   const cartTotalPizzaCount = cart.reduce(
     (sum, item) => sum + item.quantity,
     0
   );
+
   return (
     <div className="bg-stone-800 flex justify-center shadow w-screen">
       <div className=" text-stone-200  uppercase w-8/10 flex justify-between">

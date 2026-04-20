@@ -2,11 +2,11 @@ import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../core/services/apiRestaurant";
 import InputTxt from "../../core/ui/Input";
 import Button from "../../core/ui/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import store from "../../core/store";
 import { clearCart, selectCartItems } from "../../features/cart/cartSlice";
-
-// import { useSelector } from "react-redux";
+import { fetchAddress, selectUser, selectUsername } from "../user/userSlice";
+import InputWithButton from "../../core/ui/InputWithButton";
 
 const isValidePhone = (str) => {
   if (!str && str !== 0) return false;
@@ -16,32 +16,19 @@ const isValidePhone = (str) => {
   return phoneRegex.test(s);
 };
 
-// const fakeCart = [
-//   {
-//     pizzaId: 12,
-//     name: "pizza 12",
-//     quantity: 3,
-//     unitPrice: 10,
-//     totalPrice: 20,
-//   },
-//   {
-//     pizzaId: 15,
-//     name: "pizza 15",
-//     quantity: 3,
-//     unitPrice: 10,
-//     totalPrice: 20,
-//   },
-//   {
-//     pizzaId: 17,
-//     name: "pizza 17",
-//     quantity: 3,
-//     unitPrice: 10,
-//     totalPrice: 20,
-//   },
-// ];
-
 function CreateOrder() {
   const cart = useSelector(selectCartItems);
+  const username = useSelector(selectUsername);
+  const {
+    address,
+    status: addressStatus,
+    error: errorAddress,
+  } = useSelector(selectUser);
+
+  const isLoadingAddress = addressStatus === "loading";
+
+  const dispatch = useDispatch();
+
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const formError = useActionData();
@@ -73,6 +60,7 @@ function CreateOrder() {
               placeholder="John Doe"
               customeStyles="bg-stone-50 border-2 border-stone-200 focus:border-yellow-500"
               name="customer"
+              defaultValue={username || ""}
               isRequired={true}
             />
           </div>
@@ -108,14 +96,27 @@ function CreateOrder() {
             >
               Delivery Address
             </label>
-            <InputTxt
+            <InputWithButton
               id="address"
               type="text"
               name="address"
-              required
+              isRequired={true}
+              disabled={isLoadingAddress}
+              disabledButton={isLoadingAddress}
               customeStyles="bg-stone-50 border-2 border-stone-200 focus:border-yellow-500"
               placeholder="123 Main St, Apt 4B, City, State 12345"
+              buttonText={isLoadingAddress ? "Locating..." : "Get Position"}
+              onButtonClick={(e) => {
+                e.preventDefault();
+                dispatch(fetchAddress());
+              }}
+              defaultValue={address}
             />
+            {addressStatus === "error" && (
+              <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                <span>⚠️</span> {errorAddress}
+              </p>
+            )}
           </div>
 
           {/* Priority Checkbox */}
@@ -139,7 +140,7 @@ function CreateOrder() {
 
           {/* Submit Button */}
           <div className="pt-4">
-            <Button disabled={isSubmitting}>
+            <Button disabled={isSubmitting || isLoadingAddress}>
               {isSubmitting ? (
                 <span className="flex items-center justify-center gap-2">
                   Placing your order...
