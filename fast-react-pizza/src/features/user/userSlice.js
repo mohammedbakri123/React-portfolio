@@ -47,4 +47,10 @@ const userSlice = createSlice({
 
 export const { setUser, clearUser, updateUser } = userSlice.actions;
 
+export const selectUsername = (state) => state.user.username;
+
+export const selectIsLoggedIn = (state) => state.user.username !== "";
+
+export const selectUser = (state) => state.user;
+
 export default userSlice.reducer;

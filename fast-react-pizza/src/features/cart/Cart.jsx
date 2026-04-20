@@ -10,7 +10,7 @@ import ConfirmOverlay from "../../core/ui/ConfirmOverlay";
 import { useDispatch, useSelector } from "react-redux";
 
 //cart Slice State
-import { clearCart } from "./cartSlice";
+import { clearCart, selectCartItems, selectCartTotal } from "./cartSlice";
 
 // Dummy data
 // const dummyCartItems = [
@@ -35,9 +35,9 @@ function Cart() {
   const dispatch = useDispatch();
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const { items: cart } = useSelector((state) => state.cart);
-  console.log(cart);
-  const cartTotal = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+  const items = useSelector(selectCartItems);
+  console.log(items);
+  const cartTotal = useSelector(selectCartTotal);
   const deliveryFee = 0;
   const grandTotal = cartTotal + deliveryFee;
 
@@ -58,10 +58,10 @@ function Cart() {
     <div className="px-6 py-8 max-w-5xl mx-auto">
       <h1 className="text-4xl font-extrabold text-gray-900 mb-2">Your Cart</h1>
       <p className="text-gray-500 mb-8">
-        {cart.length} {cart.length === 1 ? "item" : "items"}
+        {items.length} {items.length === 1 ? "item" : "items"}
       </p>
 
-      {cart.length === 0 ? (
+      {items.length === 0 ? (
         <EmptyCart />
       ) : (
         <>
@@ -71,7 +71,7 @@ function Cart() {
 
             {/* Items */}
             <ul className="divide-y divide-gray-100">
-              {cart.map((item) => (
+              {items.map((item) => (
                 <CartItem item={item} key={item.id} />
               ))}
             </ul>

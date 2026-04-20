@@ -1,7 +1,12 @@
 import { formatCurrency } from "../../core/utils/helpers";
 import Button from "../../core/ui/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, increaseItemQuantity, decreaseItemQuantity, deleteItem } from "../cart/cartSlice";
+import {
+  addItem,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+  deleteItem,
+} from "../cart/cartSlice";
 
 function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
@@ -81,7 +86,9 @@ function MenuItem({ pizza }) {
             {/* Quantity Badge */}
             <div className="flex items-center justify-center bg-yellow-50 border border-yellow-200 rounded-xl py-2 px-4">
               <span className="text-sm font-semibold text-yellow-700">
-                In Cart: <span className="font-bold text-lg">{cartItem.quantity}</span> {cartItem.quantity === 1 ? "item" : "items"}
+                In Cart:{" "}
+                <span className="font-bold text-lg">{cartItem.quantity}</span>{" "}
+                {cartItem.quantity === 1 ? "item" : "items"}
               </span>
             </div>
 
@@ -103,7 +110,7 @@ function MenuItem({ pizza }) {
               </button>
               <button
                 onClick={handleDelete}
-                className="flex items-center justify-center gap-1.5 flex-[2] py-2.5 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 rounded-xl transition border border-red-200"
+                className="flex items-center justify-center gap-1.5  py-2.5 text-sm font-semibold text-red-600 bg-red-50 hover:bg-red-100 rounded-xl transition border border-red-200"
               >
                 <span>🗑️</span>
                 <span>Remove</span>

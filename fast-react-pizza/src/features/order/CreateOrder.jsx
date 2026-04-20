@@ -1,16 +1,10 @@
-import {
-  Form,
-  Link,
-  redirect,
-  useActionData,
-  useNavigation,
-} from "react-router-dom";
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../core/services/apiRestaurant";
 import InputTxt from "../../core/ui/Input";
 import Button from "../../core/ui/Button";
 import { useSelector } from "react-redux";
 import store from "../../core/store";
-import { clearCart } from "../../features/cart/cartSlice";
+import { clearCart, selectCartItems } from "../../features/cart/cartSlice";
 
 // import { useSelector } from "react-redux";
 
@@ -47,7 +41,7 @@ const isValidePhone = (str) => {
 // ];
 
 function CreateOrder() {
-  const cart = useSelector((state) => state.cart.items);
+  const cart = useSelector(selectCartItems);
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   const formError = useActionData();

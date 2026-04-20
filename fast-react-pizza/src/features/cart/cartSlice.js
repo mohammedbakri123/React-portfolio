@@ -82,4 +82,20 @@ export const {
   increaseItemQuantity,
 } = cartSlice.actions;
 
+export const selectCartItems = (state) => state.cart.items;
+
+export const selectCartTotal = (state) =>
+  state.cart.items.reduce((total, item) => total + item.totalPrice, 0);
+
+export const selectCartItemCount = (state) =>
+  state.cart.items.reduce((count, item) => count + item.quantity, 0);
+
+export const selectCartItemById = (state, pizzaId) =>
+  state.cart.items.find((item) => item.pizzaId === pizzaId);
+
+export const selectCartItemQuantityById = (state, pizzaId) => {
+  const item = state.cart.items.find((item) => item.pizzaId === pizzaId);
+  return item ? item.quantity : 0;
+};
+
 export default cartSlice.reducer;
