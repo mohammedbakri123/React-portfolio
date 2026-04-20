@@ -1,38 +1,56 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../core/ui/Button";
 import ButtonAlt from "../../core/ui/ButtonAlt";
-
 import { formatCurrency } from "../../core/utils/helpers";
 
 function OrderSummary({ orderPrice, priority, priorityPrice }) {
   const navigate = useNavigate();
+  const total = orderPrice + (priority ? priorityPrice : 0);
+
   return (
-    <aside className="w-full md:w-80 mt-2 md:mt-0">
-      <div className="bg-stone-50 p-4 rounded-lg shadow-inner">
-        <h4 className="text-md font-semibold mb-3">Summary</h4>
-        <div className="flex justify-between text-sm text-stone-600">
-          <span>Items total</span>
-          <span>{formatCurrency(orderPrice)}</span>
-        </div>
-        {priority && (
-          <div className="flex justify-between text-sm text-stone-600 mt-2">
-            <span>Priority fee</span>
-            <span>{formatCurrency(priorityPrice)}</span>
-          </div>
-        )}
+    <aside className="sticky top-6">
+      <div className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm">
+        <h4 className="text-lg font-bold text-stone-800 mb-6 flex items-center gap-2 border-b pb-4">
+          <span>🧾</span> Payment Summary
+        </h4>
 
-        <div className="border-t mt-3 pt-3 flex justify-between items-center">
-          <div>
-            <div className="text-sm text-stone-500">To pay on delivery</div>
-            <div className="text-lg font-extrabold text-stone-700">
-              {formatCurrency(orderPrice + (priority ? priorityPrice : 0))}
+        <div className="space-y-4">
+          <div className="flex justify-between items-center text-sm">
+            <span className="text-stone-500 font-medium">Subtotal</span>
+            <span className="text-stone-800 font-bold">
+              {formatCurrency(orderPrice)}
+            </span>
+          </div>
+
+          {priority && (
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-amber-600 font-medium flex items-center gap-1">
+                <span>🚀</span> Priority Delivery
+              </span>
+              <span className="text-stone-800 font-bold">
+                {formatCurrency(priorityPrice)}
+              </span>
             </div>
+          )}
+
+          <div className="pt-4 border-t border-dashed border-stone-200">
+            <div className="flex justify-between items-end mb-1">
+              <span className="text-stone-500 text-xs font-bold uppercase tracking-wider">
+                Total to pay
+              </span>
+              <span className="text-2xl font-black text-stone-900 leading-none">
+                {formatCurrency(total)}
+              </span>
+            </div>
+            <p className="text-[10px] text-stone-400 text-right italic font-medium">
+              Pay with cash on delivery
+            </p>
           </div>
         </div>
 
-        <div className="mt-4 space-y-2">
-          <Button onClick={() => {}}>Contact restaurant</Button>
-          <ButtonAlt onClick={() => navigate("/menu")}>Back to menu</ButtonAlt>
+        <div className="mt-8 space-y-3">
+          <Button onClick={() => {}}>Support</Button>
+          <ButtonAlt onClick={() => navigate("/menu")}>New Order</ButtonAlt>
         </div>
       </div>
     </aside>

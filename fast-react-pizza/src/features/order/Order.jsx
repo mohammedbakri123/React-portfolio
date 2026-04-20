@@ -21,24 +21,31 @@ function Order() {
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <div className="bg-white shadow-md rounded-xl overflow-hidden">
-        <OrderHeader priority={priority} status={status} id={id} />
+    <div className="max-w-4xl mx-auto p-4 md:p-8 space-y-6">
+      {/* 1. Main Header */}
+      <div className="bg-white shadow-sm rounded-2xl overflow-hidden border border-stone-100">
+        <OrderHeader
+          priority={priority}
+          status={status}
+          id={id}
+          deliveryIn={deliveryIn}
+          estimatedDelivery={estimatedDelivery}
+        />
+      </div>
 
-        <main className="p-6">
-          <div className="flex flex-col md:flex-row md:gap-6 gap-4">
-            <OrderList
-              order={order}
-              deliveryIn={deliveryIn}
-              estimatedDelivery={estimatedDelivery}
-            />
-            <OrderSummary
-              orderPrice={orderPrice}
-              priority={priority}
-              priorityPrice={priorityPrice}
-            />
-          </div>
-        </main>
+      {/* 2. Main Content Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="lg:col-span-2">
+          <OrderList order={order} />
+        </div>
+
+        <div className="lg:col-span-1">
+          <OrderSummary
+            orderPrice={orderPrice}
+            priority={priority}
+            priorityPrice={priorityPrice}
+          />
+        </div>
       </div>
     </div>
   );
