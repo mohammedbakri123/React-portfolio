@@ -1,4 +1,4 @@
-import Button from "../../ui/Button";
+import Button from "../../core/ui/Button";
 
 function CheckoutButton({ bookingId }) {
   return (

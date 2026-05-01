@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import Button from "../../ui/Button";
-import FileInput from "../../ui/FileInput";
-import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
-import Input from "../../ui/Input";
+import Button from "../../core/ui/Button";
+import FileInput from "../../core/ui/FileInput";
+import Form from "../../core/ui/Form";
+import FormRow from "../../core/ui/FormRow";
+import Input from "../../core/ui/Input";
 
 import { useUser } from "./useUser";
 

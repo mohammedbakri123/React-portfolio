@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -69,11 +69,17 @@ const StyledButton = styled.button<{ $variation?: string; $size?: string }>`
   justify-content: center;
   gap: 0.8rem;
 
-  ${(props) => props.$variation && variations[props.$variation as keyof typeof variations]}
+  ${(props) =>
+    props.$variation && variations[props.$variation as keyof typeof variations]}
   ${(props) => props.$size && sizes[props.$size as keyof typeof sizes]}
 `;
 
-function Button({ children, variation = "primary", size = "medium", ...props }: ButtonProps) {
+function Button({
+  children,
+  variation = "primary",
+  size = "medium",
+  ...props
+}: ButtonProps) {
   return (
     <StyledButton $variation={variation} $size={size} {...props}>
       {children}
